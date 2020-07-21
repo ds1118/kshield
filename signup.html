@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>회원가입</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="public/css/style.min.css" />
+    <link rel="stylesheet" href="public/css/modules.css" />
+    <link rel="stylesheet" href="public/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <style>
+        table {
+            height: 100px;
+            margin: auto;
+            text-align: center;
+        }
+
+        input.btn {
+            width: 85px
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <header class="MOD_HEADER3">
+        <div class="MOD_HEADER3_SocialBarContainer">
+            <div data-layout="_r" class="MOD_HEADER3_SocialBar">
+                <div class="MOD_HEADER3_SocialIcons">
+
+                    <div class="menubar">
+                        <nav>
+                            <ul>
+                                <li>
+                                    <a href="index.html" class="text">K-SHIELD</a>
+                                </li>
+                                <li><a href="#" class="view" onclick="myFunction()">View Mask</a></li>
+                                <li>
+                                <li><a href="#" class="view" onclick="myFunction()">View Agents</a></li>
+
+                                <li>
+                                <li><a href="#" class="view" onclick="myFunction()">Agents register</a></li>
+
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="MOD_HEADER3_Contact">
+                    <p class="MOD_HEADER3_Tel"></p>
+                    <a href="signup.html" class="btn"> Sign up </a>
+                    <a href="login.html" class="btn"> Login </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <form name="registerform" id="my-form" action="#" method="post">
+            <div data-layout="_r">
+                <div data-layout="al16">
+                    <h1 style="text-align: center;">Sign up</h1>
+                </div>
+                <section>
+                    <table class="signupform">
+                        <tr>
+                            <td>
+                                <label for="email">아이디<span class="required">*</span></label>
+                                <input type="email" placeholder="E-mail" required="required" aria-required="true"
+                                    name="useremail" id="id" /><br><span
+                                    style="color: red;font-size: xx-small"><strong>[정확한 이메일을 입력해주세요. 비밀번호를 찾을때 메일로
+                                        전송됩니다.]</strong></span>
+                            </td>
+                            <td><button class="btn" onclick="check()">중복 확인</button></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="passwordlabel">비밀번호<span class="required">*</span></label>
+                                <input type="password" name="userpw" placeholder="Password" required="required"
+                                    id="pass" aria-required="true" /><br><span
+                                    style="color: red;font-size: xx-small"><strong>[숫자, 대문자 및 소문자를
+                                        포함하는 8 ~ 20 자]</strong></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="passwordConfirm">비밀번호 재확인<span class="required">*</span></label>
+                                <input type="password" required="required" aria-required="true" placeholder="Repassword"
+                                    name="confirmuserpassword" id="passcheck" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="aff">소속<span class="required">*</span></label>
+                                <select name="affselect" style="height:30px">
+                                    <option selected(초기 선택된 항목)>생산업체</option>
+                                    <option>판매업체</option>
+                                    <option>유통업체</option>
+                                    <option>관리감독기관</option>
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+
+                    <label for="createsubmit">
+                        <input type="submit" value="가입하기" id="submitt" name="resultBtn" class="btn"
+                            onclick="Signup(document.registerform.userpw);return false;" /></label>
+
+                </section>
+            </div>
+
+
+
+
+            <div id=bitwise-footer
+                style=text-align:center;margin-top:3em;padding:1em;color:#aaaaaa;font-size:0.75em;font-style:italic;>
+                Hosted by
+                the team <a href=http://www.bitwise.io/ target=_blank class="r">K-Shield</a></div>
+
+
+
+            <script>
+
+                function Signup(inputtxt) {
+                    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/;
+                    if (inputtxt.value.match(passw)) {
+
+
+                        console.log("pass:", passw);
+
+                        var pass = document.getElementById('pass').value;
+                        var passCheck = document.getElementById('passcheck').value;
+
+
+                        console.log("pass:", pass);
+                        console.log("passCheck:", passCheck);
+
+                        if (pass == passCheck) {
+                            alert('회원가입 되었습니다');
+                            location.href = "login.html";
+                        } else {
+                            alert('비밀번호가 일치하지 않습니다');
+                            return false;
+                        }
+
+
+                    }
+
+
+                    else {
+                        console.log(" else test");
+                        alert('\n이메일 중복 확인하세요\n\n비밀번호는 숫자, 대문자 및 소문자를 포함하는 8 ~ 20 자');
+                        return false;
+                    }
+                }
+
+
+
+
+
+
+
+                //    function signup() {
+                //      alert("가입되었습니다");
+                //    }
+                //    function myFunction() {
+                //      alert("로그인 하세요");
+                //    }
+                //    function check() {
+                //      alert("사용 가능한 ID입니다");
+                //    }
+
+
+
+                //     window.onload=function(){
+                //document.getElementById('my-form').onsubmit=function(){
+                // var pass=document.getElementById('pass').value;
+                // var passCheck=document.getElementById('pass-check').value;
+
+                // if(pass==passCheck){
+                //  alert('가입되었습니다');
+                //  location.href="login.html";
+                // }else{
+                // alert('비밀번호가 일치하지 않습니다.');
+                //   return false;
+                // }
+
+                // }
+                //}
+
+
+                /*
+                          //<!-- window.onload=function(){ -->
+              <!-- document.getElementById('my-form').onsubmit=function(){ -->
+               <!-- var pass=document.getElementById('pass').value; -->
+               <!-- var passCheck=document.getElementById('pass-check').value; -->
+        
+               <!-- if(pass==passCheck){ -->
+                <!-- alert('가입되었습니다'); -->
+                <!-- location.href="login.html"; -->
+               <!-- }else{ -->
+               <!-- alert('비밀번호가 일치하지 않습니다.'); -->
+                 <!-- return false;  -->
+               <!-- } -->
+        
+                */
+                function myFunction() {
+                    alert("로그인 하세요");
+                }
+
+            </script>
+
+
+
+        </form>
+    </section>
+</body>
+
+</html>
